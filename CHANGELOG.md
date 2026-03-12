@@ -5,23 +5,35 @@ All notable changes to RoundTable Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — 2026-03-12
+
+### Added
+- `/audit` skill — end-to-end multi-domain code audit with 6 domain passes (ux-flow, data, logic, security, resources, errors), symptom trace mode, and large codebase strategy
+
+### Changed
+- Reverted to ClaudeDemo base template structure
+- Folder structure: flat `policies/`, `Team Roster/`, `Team Chat/`, `agents/` (removed nested `TeamDocument/` wrapper)
+- Overseer team: 3 members (AM, MT, AS) — Design & Verification Scholar combined role
+- Authority naming: Commander ท่านผู้บัญชาการ (original)
+- Restored `settings.json` with PreToolUse hooks for policy file protection
+- Restored 4 agent definitions (monolith, syndicate, arcade, cipher)
+- Restored original 6 skills (roundtable-open, ticket-create, briefing-create, zcb-check, overseer-report, l3-scan)
+- README.md: added Quick Install Prompt (copy-paste) and usage warnings for both EN and TH
+- ProjectEnvironment.md: added field reference table and commented examples
+
+### Removed
+- `TeamDocument/` nested folder structure
+- `08_Skills_and_Subagents.md` policy (§8)
+- Medica (Team_Medica.md, Medical Reference/)
+- 4-member Overseer split (PM + V) — reverted to combined AS role
+- KP/Chief Manager Martin naming — reverted to AM/Commander ท่านผู้บัญชาการ
+- 6 persona switch skills (Overseer, Monolith, Syndicate, Arcade, Cipher, Medica)
+- 6 template management skills (template-status, template-changelog, template-check, template-diff, template-apply, template-rollback)
+- 7 workflow skills not in base (bug-report, mod-log, sub-feature, compact-resume, phase-status, team-start)
+- KP Orchestration Mode A/B
+- HandOver subfolders
+
 ## [1.0.0] — 2026-03-12
 
 ### Added
-- Core policy file (CLAUDE.md) with team initialization sequence and character integrity rules
-- 8 modular policy files covering logging, tickets, team chat, development structure, codebase scanning, debugging, parallel execution, and skills/subagents
-- 6 team roster definitions: Overseer, Monolith, Syndicate, Arcade, Cipher, Medica
-- Team Chat directory structure with HandOver folders and OverseerReport
-- Diagnostic Log directory for Cipher engagements
-- Medical Reference directory for Medica consultations
-- ProjectEnvironment.md template for project registry
-- 13 built-in workflow skills: audit, bug-report, mod-log, sub-feature, compact-resume, phase-status, team-start, and 6 persona switch skills
-- 6 template management skills: template-status, template-changelog, template-check, template-diff, template-apply, template-rollback
-- RoundTable session logging system with file rotation policy (400/500 line limits)
-- Tiered codebase scan protocol (L1/L2/L3) with 5-check completeness verification
-- Zero Cross-Team Block (ZCB) guarantee for parallel execution
-- Planning-first workflow enforcement
-- Instrument-first debugging protocol
-- TeamDocument/ nested folder structure for all team-facing documents
-- settings.json with sensible default permissions
-- README.md, LICENSE (MIT), template-version.json
+- Initial release (subsequently found to have diverged from ClaudeDemo base — see v1.1.0 for corrections)
