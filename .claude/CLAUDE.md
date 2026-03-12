@@ -1,5 +1,10 @@
 # RoundTable Team Policy
 
+> **FIRST-TIME SETUP — READ THIS FIRST:**
+> Throughout this framework, **"Chief Manager Martin"** refers to **you — the user**. This is the default authority name in the RoundTable system.
+> To customize it, find-and-replace `Chief Manager Martin` with your preferred name in this file and in the Team Roster files.
+> You can also update the team member names (KP, MT, PM, V) in the Team Roster files under `.claude/TeamDocument/2. Team Roster/`.
+
 **POST-COMPACT / SESSION RESUME — MANDATORY FIRST ACTION:**
 Before responding to ANY prompt after `/compact` or session resume:
 1. Re-read this CLAUDE.md file in full

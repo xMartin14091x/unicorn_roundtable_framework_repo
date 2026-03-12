@@ -24,16 +24,30 @@ RoundTable Framework is a `.claude/` configuration template that gives Claude Co
 ## Quick Start
 
 1. **Clone this repo** into your project:
+
+   **Bash / Git Bash / macOS / Linux:**
    ```bash
    git clone https://github.com/VarakornUnicornTech/unicorn_roundtable_framework_repo.git .claude-template
    cp -r .claude-template/.claude/ your-project/.claude/
+   rm -rf .claude-template
    ```
 
-2. **Edit `.claude/ProjectEnvironment.md`** — add your project details (name, mode, paths)
+   **PowerShell (Windows):**
+   ```powershell
+   git clone https://github.com/VarakornUnicornTech/unicorn_roundtable_framework_repo.git .claude-template
+   Copy-Item -Recurse .claude-template\.claude\ your-project\.claude\
+   Remove-Item -Recurse -Force .claude-template
+   ```
 
-3. **Start Claude Code** in your project directory — it will automatically load CLAUDE.md and adopt the team structure
+   > **Note:** If you install via Claude Code, it runs commands through Git Bash automatically — no need to worry about OS differences.
 
-4. **Choose your team** — Claude will prompt you to select a Team Roster (Overseer, Monolith, Syndicate, Arcade, Cipher, or Medica)
+2. **Edit `.claude/ProjectEnvironment.md`** — add your project details (name, mode, paths). See the field reference and examples inside the file.
+
+3. **Customize your authority name** — The framework uses "Chief Manager Martin" as the default name for the user (that's you!). To personalize, find-and-replace `Chief Manager Martin` with your name in `.claude/CLAUDE.md`.
+
+4. **Start Claude Code** in your project directory — it will automatically load CLAUDE.md and adopt the team structure
+
+5. **Choose your team** — Claude will prompt you to select a Team Roster (Overseer, Monolith, Syndicate, Arcade, Cipher, or Medica)
 
 ## Project Structure
 
