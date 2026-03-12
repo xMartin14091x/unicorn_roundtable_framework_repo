@@ -1,5 +1,7 @@
 # RoundTable Framework For Claude Code
 
+> **ภาษาไทย / Thai:** [อ่าน README ภาษาไทย](README.th.md)
+
 A structured multi-team AI governance framework for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). RoundTable organizes your Claude Code sessions into specialized teams with defined roles, logging standards, and quality gates — turning a single AI assistant into a coordinated engineering organization.
 
 **By [Unicorn Tech Integration Co., Ltd.](https://www.unicorntechint.com)**
