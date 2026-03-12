@@ -1,0 +1,21 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local settings (user-specific, not part of template)
+.claude/settings.local.json
+
+# Project-specific data (generated at runtime, not part of template)
+RoundTable/
+Development/
+
+# Backup files from /template-apply
+*.backup
+template-version.backup.json
