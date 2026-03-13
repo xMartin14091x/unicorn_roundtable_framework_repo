@@ -17,8 +17,8 @@ jobs:
     steps:
       - uses: actions/first-interaction@v3
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: |
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_message: |
             Welcome to RoundTable Framework! Thank you for opening your first issue.
 
             A maintainer will review this shortly. While you wait:
@@ -27,7 +27,7 @@ jobs:
             - Browse [Discussions](https://github.com/VarakornUnicornTech/unicorn_roundtable_framework_repo/discussions) for common questions
 
             Thank you for helping improve RoundTable Framework!
-          pr-message: |
+          pr_message: |
             Welcome to RoundTable Framework! Thank you for your first pull request.
 
             A maintainer will review it shortly. Please make sure you've:

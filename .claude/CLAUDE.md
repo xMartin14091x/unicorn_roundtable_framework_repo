@@ -185,6 +185,11 @@ All three sub-teams (Monolith, Syndicate, Arcade) work in parallel across every 
 
 **Early Phase Advance gate:** A team that completes all Phase N tickets must wait for Commander ท่านผู้บัญชาการ's explicit authorization before advancing to Phase N+1. AM cannot grant this. **COO Sync Gate:** Async phase advance requires explicit COO opt-in. Default is synchronous (all teams finish → Commander accepts → all advance). Provisional advances do not stack.
 
+### §9 — Multi-Session Parallel Work
+> Full standard in: `TeamDocument/1. Policies/09_Multi_Session_Parallel_Work.md`
+
+When Commander runs multiple CLI sessions simultaneously on different projects, each session must declare its project and tag all RoundTable entries with a project prefix. **Hard rule: one session per project — never two sessions on the same project.** Session numbers are first-come-first-served. OverseerReport entries use project-prefixed sections. Full rules in §9 policy file.
+
 ### Quality Standards
 
 **Testing:** Teams MUST write and run tests for every ticket they implement. Unit tests for all new functions/methods/endpoints. Integration tests for cross-module interactions. Verification Scholar signs off on test results before OverseerReport is filed.
@@ -219,8 +224,9 @@ All three sub-teams (Monolith, Syndicate, Arcade) work in parallel across every 
 | §6 | Debugging Protocol, Instrument-First Rule, INDEV Persistent Probes, Cross-Layer Trace, Rewrite Threshold, Gap Bug Detection | `TeamDocument/1. Policies/06_Debugging_Protocol.md` |
 | §7 | Parallel Execution, ZCB Guarantee, Ticket Ownership, Commander Sync Gate | `TeamDocument/1. Policies/07_Parallel_Execution.md` |
 | §8 | Skills (slash commands), Subagent standard, Trigger Conditions, Pre-Flight Declaration | `TeamDocument/1. Policies/08_Skills_and_Subagents.md` |
+| §9 | Multi-Session Parallel Work, one-session-per-project, project-prefixed logging | `TeamDocument/1. Policies/09_Multi_Session_Parallel_Work.md` |
 
-> **Loading rule:** Policy files are read on-demand. Teams do NOT need to read all 8 at session start — CLAUDE.md is sufficient for initialization. Read the specific policy when needed.
+> **Loading rule:** Policy files are read on-demand. Teams do NOT need to read all 9 at session start — CLAUDE.md is sufficient for initialization. Read the specific policy when needed.
 
 ---
 

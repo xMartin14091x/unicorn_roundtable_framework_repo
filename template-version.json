@@ -1,13 +1,13 @@
 {
   "name": "roundtable-framework",
-  "version": "1.3.0",
-  "description": "RoundTable Framework for Claude Code — Multi-team AI governance template",
+  "version": "1.4.0",
+  "description": "RoundTable Framework for Claude Code \u00e2\u20ac\u201d Multi-team AI governance template",
   "author": "Unicorn",
   "license": "MIT",
   "released": "2026-03-13",
-  "notes": "v1.3.0 — BREAKING: Full restructure with path changes (policies/ → TeamDocument/1. Policies/, Team Roster → agents/, Team Chat → TeamDocument/2. TeamChat/). See MIGRATION.md. Full restructure: agents/ as sole identity source (Team Roster removed), TeamDocument/ consolidation, SESSION START RULE every session, AM Mode A/B + COO Vision Gate, Architecture Decision Rule, §8 Skills & Subagents policy, /template + consolidated skill set (14 skills).",
+  "notes": "v1.4.0 \u2014 Added \u00a79 Multi-Session Parallel Work policy. Enables safe concurrent CLI sessions across different projects with project-prefixed RoundTable logging, first-come-first-served session numbering, and one-session-per-project hard rule.",
   "file_hashes": {
-    ".claude/CLAUDE.md": "0940173a7d31a5b45e2e3d08c36cf5b374c466bbd5a122ae8cd74090c9f45290",
+    ".claude/CLAUDE.md": "0855ab496961b53f8f1ddfc25af3c3b71fe2ed2389ccc6cfc4944b90d20ce1ba",
     ".claude/TeamDocument/1. Policies/01_Logging_and_RoundTable.md": "68abd6c736508b857567680debdad35b7e78a762896007c727db630b76c73070",
     ".claude/TeamDocument/1. Policies/02_Ticket_and_Briefing.md": "d66db0f20635825259b5efa9ebc23a21b4f6829be22791f803aee550805fcfe2",
     ".claude/TeamDocument/1. Policies/03_TeamChat_and_Handover.md": "0a6aba4bb57267af1b656a868eaed8406de3972099302d7fb4ac7600a5531662",
@@ -34,6 +34,7 @@
     ".claude/agents/monolith.md": "a6f6b6036635425d4b1fc7ca3886f5d484c36d5042fceb578172f3f87ecf8020",
     ".claude/agents/syndicate.md": "426b6d9f6d99a21e4c48d62b8499e366211be9c37cc6db1a29b77ae675e246aa",
     ".claude/agents/arcade.md": "3b4b33abc7a075f83cc15329d2e9798fdf597a960c1e70bf93e286f966e55c42",
-    ".claude/agents/cipher.md": "a61fae8322d69c6ec9f86f8e650011f6396439608afed8711c68a8690db5879a"
+    ".claude/agents/cipher.md": "a61fae8322d69c6ec9f86f8e650011f6396439608afed8711c68a8690db5879a",
+    ".claude/TeamDocument/1. Policies/09_Multi_Session_Parallel_Work.md": "acb1f26aef01d0b45eecc8e8ca60c1001c31f8b3986ec41aa6c01319b593dbe0"
   }
 }
