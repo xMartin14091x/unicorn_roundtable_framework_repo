@@ -9,7 +9,7 @@ You are performing the **RoundTable Commander Onboarding**. Execute all steps in
 
 The onboarding has two parts:
 - **Basic Setup** — 5 quick questions to get started. Progress counter `(X/5)` shown on each.
-- **Advanced Setup** — 6 optional questions for fine-tuning. Only shown if the user opts in. No progress counter.
+- **Advanced Setup** — optional questions for fine-tuning. Only shown if the user opts in. No progress counter.
 
 ## Arguments
 
@@ -19,6 +19,19 @@ The onboarding has two parts:
 ---
 
 ## Steps
+
+### Welcome Banner
+
+Before any questions, output the following message:
+
+```
+Welcome to RoundTable Framework.
+
+Thank you for choosing us — we're excited to build something amazing together.
+Let's get you set up. Just a few quick questions.
+```
+
+---
 
 ### 0. Check for existing profile
 
@@ -63,7 +76,7 @@ Ask each question one at a time using `AskUserQuestion`.
 **Question (3/5):**
 > "(3/5) What is your name?"
 - Header: `Name`
-- Options: `Prefer not to say` / `Use callsign only`
+- Options: `Prefer not to say` / `Use callsign only` / `Other — type your name`
 - Note: The question text should make clear that typing a name is preferred. The two options are fallbacks for users who do not want to provide a name. Most users will type their name via the "Other" free-text input.
 
 **Question (4/5):**
@@ -77,7 +90,7 @@ Ask each question one at a time using `AskUserQuestion`.
 - Header: `Setup`
 - Description for each:
   - Use defaults — all teams active, Mode A orchestration, Standard verbosity, Balanced autonomy. You can change these anytime with `/roundtable-setup update`.
-  - Configure — 6 additional questions to fine-tune team composition, orchestration mode, phase gates, verbosity, autonomy, and decision style.
+  - Configure — additional questions to fine-tune team composition, orchestration mode, phase gates, verbosity, autonomy, decision style, and response tone.
 
 - If **Use defaults** → apply defaults (see table below), skip to Step 4 (Confirm Before Saving).
 - If **Configure** → proceed to Step 2 (Advanced Setup).
@@ -92,6 +105,7 @@ Ask each question one at a time using `AskUserQuestion`.
 | Verbosity | Standard |
 | Autonomy Level | Balanced |
 | Architectural Decisions | Structured |
+| Response Tone | Professional |
 
 ---
 
@@ -166,6 +180,14 @@ Ask each question one at a time using `AskUserQuestion`. No progress counter for
   - Structured — AM/MT explain all options with trade-offs first, then present a choice UI
   - Conversational — AM/MT describe options in prose, you reply in free text
 
+**Response Tone:**
+> "How should team members express themselves in responses?"
+- Options: `Professional — clean and formal, no decorations` / `Expressive — team members show personality with emojis and kaomoji`
+- Header: `Tone`
+- Description for each:
+  - Professional — straight to the point. No emojis, no kaomoji. Clean, formal output.
+  - Expressive — team members can use emojis and kaomoji to convey feelings and reactions. Adds personality to reports, logs, and responses.
+
 Save answers to profile section: `## Working Style`
 
 ---
@@ -187,6 +209,7 @@ Here is your Commander profile:
   Verbosity .......... [level]
   Autonomy ........... [Full Oversight / Balanced / Autonomous]
   Decisions .......... [Structured / Conversational]
+  Tone ............... [Professional / Expressive]
 ```
 
 Use `AskUserQuestion`:
@@ -225,18 +248,19 @@ last_updated: DD-MM-YYYY
 - **Verbosity:** [Concise / Standard / Full]
 - **Autonomy Level:** [Full Oversight / Balanced / Autonomous]
 - **Architectural Decisions:** [Structured / Conversational]
+- **Response Tone:** [Professional / Expressive]
 ```
 
 Replace `DD-MM-YYYY` with today's actual date.
 
 ---
 
-### 6. Confirm
+### 6. Completion
 
 Output the following (adapt callsign and name from profile):
 
 ```
-Commander profile saved to .claude/UserProfile.md
+All set. Your Commander profile is saved.
 
   Language ........... [language]
   Callsign ........... [title]
@@ -248,8 +272,15 @@ Commander profile saved to .claude/UserProfile.md
   Verbosity .......... [level]
   Autonomy ........... [Full Oversight / Balanced / Autonomous]
   Decisions .......... [Structured / Conversational]
+  Tone ............... [Professional / Expressive]
 
-RoundTable is ready. Welcome, [callsign] [name].
+Now — what's the dream you want to bring to life?
+
+You can:
+  - Tell us about your project idea and we'll help you plan it
+  - Start talking — AM and the team are standing by
+
+Let's build something great together, [callsign] [name].
 ```
 
 ---
@@ -268,6 +299,7 @@ RoundTable is ready. Welcome, [callsign] [name].
   - **Balanced** = approval for major items, AM handles minor independently
   - **Autonomous** = short report, team executes autonomously
 - **Architectural Decisions: Structured** means MT and team Conductors MUST deliver a full explanation (diagram, comparison table, or analysis) BEFORE opening the AskUserQuestion choice UI. The user must have full context before being asked to choose.
+- **Response Tone: Expressive** allows team members to use emojis and kaomoji in responses, logs, and reports to convey feelings and reactions. **Professional** means no emojis, no kaomoji — clean formal output only. This setting applies to all team members across all sessions.
 - **Phase Acceptance Gate** setting is applied as if Commander had toggled it in §2 policy.
 - Project-specific settings (tech stack, project type, structure mode, debug mode) are configured per-project — not during onboarding.
 - Profile can be updated at any time by running `/roundtable-setup update`.
