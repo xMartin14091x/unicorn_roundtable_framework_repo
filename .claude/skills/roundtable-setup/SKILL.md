@@ -109,6 +109,15 @@ Ask each question one at a time using `AskUserQuestion`.
 
 ---
 
+### Input Validation (applies to all free-text answers)
+
+After receiving any free-text "Other" input, validate before accepting:
+- **Language:** Must be a recognizable language name. If unrecognized, re-ask: "I didn't recognize that as a language. Could you try again?"
+- **Callsign / Name:** If the input looks unintentional (random characters, single punctuation), confirm: "Just to confirm — you'd like to be called '[input]'?" Accept if confirmed.
+- Never reject outright — always confirm. The user may have a genuinely unusual preference.
+
+---
+
 ### 1b. Section Selector (update mode only)
 
 Use `AskUserQuestion`:
@@ -234,21 +243,21 @@ last_updated: DD-MM-YYYY
 # Commander Profile
 
 ## Identity
-- **Language:** [answer]
-- **Callsign:** [answer]
-- **Name:** [answer]
-- **Pronouns:** [answer]
+- **Language:** [answer] <!-- language name (e.g. "English", "Thai", "Japanese") or "Mirror input language" (responds in whatever language each message is written in) -->
+- **Callsign:** [answer] <!-- how the team addresses you: Commander / Boss / Chief / or any custom title -->
+- **Name:** [answer] <!-- your name (e.g. "Martin"), "Prefer not to say", or "Use callsign only" -->
+- **Pronouns:** [answer] <!-- He / Him | She / Her | They / Them | No preference | or custom -->
 
 ## Team & Orchestration
-- **Active Teams:** [comma-separated list]
-- **Orchestration Mode:** [A or B]
-- **Phase Acceptance Gate:** [ON / OFF]
+- **Active Teams:** [comma-separated list] <!-- which teams are enabled: Overseer (always on), Monolith, Syndicate, Arcade. Cipher is always available on-demand -->
+- **Orchestration Mode:** [A or B] <!-- A = AM spawns all teams, collects results, presents one report | B = you open separate sessions per team for direct control -->
+- **Phase Acceptance Gate:** [ON / OFF] <!-- ON = no phase advances until you personally test and accept | OFF = teams advance on internal sign-off -->
 
 ## Working Style
-- **Verbosity:** [Concise / Standard / Full]
-- **Autonomy Level:** [Full Oversight / Balanced / Autonomous]
-- **Architectural Decisions:** [Structured / Conversational]
-- **Response Tone:** [Professional / Expressive]
+- **Verbosity:** [Concise / Standard / Full] <!-- Concise = key results only | Standard = balanced detail | Full = complete reasoning with alternatives and trade-offs -->
+- **Autonomy Level:** [Full Oversight / Balanced / Autonomous] <!-- Full Oversight = explicit approval for everything | Balanced = approval for major items only | Autonomous = team executes independently, short summary only -->
+- **Architectural Decisions:** [Structured / Conversational] <!-- Structured = analysis table first, then choice UI popup | Conversational = options described in prose, you reply in free text -->
+- **Response Tone:** [Professional / Expressive] <!-- Professional = clean formal output, no emojis | Expressive = team members use emojis and kaomoji to show personality -->
 ```
 
 Replace `DD-MM-YYYY` with today's actual date.

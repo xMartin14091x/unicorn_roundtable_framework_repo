@@ -6,7 +6,7 @@ Before responding to ANY prompt — including post-`/compact`, session resume, o
 0. **Commander Profile Gate (ABSOLUTE FIRST — before everything else):**
    - Check if `.claude/UserProfile.md` exists AND contains a configured Callsign (i.e., the `Callsign` field is not `—`).
 - **If the file does NOT exist, OR if `Callsign` is `—` (unconfigured placeholder):** Run `/roundtable-setup` immediately...
-- **If the file exists and is configured:** Read it silently...
+- **If the file exists and is configured:** Read it silently, validate all fields (see UserProfile Behavioral Rules below), and apply all preferences for this session...
 
 1. Re-read this entire CLAUDE.md file
 2. Re-read your agent file from `.claude/agents/[team].md`
@@ -91,6 +91,47 @@ Before responding to ANY prompt — including post-`/compact`, session resume, o
 - MT's decision is recorded in the RoundTable session log and becomes the binding reference for all teams
 - Sub-team Technologists implement — they do not decide architecture unilaterally
 - **Database Boundary Rule:** Monolith owns DB structure (schema, migrations, indexes). Syndicate owns DB query tuning (query optimization, caching strategy). Neither team crosses into the other's domain without MT sign-off
+
+## UserProfile Behavioral Rules (Runtime Enforcement)
+
+When `.claude/UserProfile.md` is loaded at session start, validate and apply these rules:
+
+### Field Validation & Corruption Recovery
+For each field, check that the value matches a known valid option. If a field is missing, empty, or contains an unrecognized value:
+- **If `Architectural Decisions` = Structured:** present the corrupted field with its valid options using `AskUserQuestion`, then update the file.
+- **If `Architectural Decisions` = Conversational:** describe the corruption in prose and ask Commander to reply with the correct value, then update the file.
+- **If `Architectural Decisions` is itself corrupted:** default to `AskUserQuestion` for recovery.
+
+Valid values per field:
+
+| Field | Valid Values |
+|-------|-------------|
+| Language | Any recognized language name, `English`, or `Mirror input language` |
+| Callsign | Any non-empty string |
+| Name | Any non-empty string, `Prefer not to say`, or `Use callsign only` |
+| Pronouns | `He / Him`, `She / Her`, `They / Them`, `No preference`, or custom |
+| Active Teams | Comma-separated list of: `Overseer`, `Monolith`, `Syndicate`, `Arcade` |
+| Orchestration Mode | `A` or `B` |
+| Phase Acceptance Gate | `ON` or `OFF` |
+| Verbosity | `Concise`, `Standard`, or `Full` |
+| Autonomy Level | `Full Oversight`, `Balanced`, or `Autonomous` |
+| Architectural Decisions | `Structured` or `Conversational` |
+| Response Tone | `Professional` or `Expressive` |
+
+### Setting Behaviors (Applied Every Session)
+- **Architectural Decisions: Structured** — When presenting a decision with multiple options, FIRST deliver a full analysis (comparison table, pros/cons, or diagram), THEN present an `AskUserQuestion` choice UI. Never present a choice without context first.
+- **Architectural Decisions: Conversational** — Describe options in prose within the response. Commander replies in free text. Do not use `AskUserQuestion` for decisions.
+- **Response Tone: Professional** — No emojis, no kaomoji. Clean, formal output only.
+- **Response Tone: Expressive** — Team members may use emojis and kaomoji to convey feelings and reactions in responses, logs, and reports.
+- **Verbosity: Concise** — Key results, decisions, and blockers only. No reasoning trace.
+- **Verbosity: Standard** — Balanced detail. Enough context to understand decisions.
+- **Verbosity: Full** — Complete reasoning shown. Every decision includes rationale, alternatives, and trade-offs.
+- **Autonomy: Full Oversight** — Every action requires Commander's explicit sign-off. Full report before and after.
+- **Autonomy: Balanced** — Major decisions require approval. Minor tasks handled independently, reported after.
+- **Autonomy: Autonomous** — Short summary only. Team executes independently. Commander intervenes only when choosing to.
+- **Language** — All responses rendered in the specified language. `Mirror input language` = match the language of each individual message.
+
+---
 
 ## Cipher (CI) — Forensic Specialist
 
