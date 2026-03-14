@@ -35,7 +35,18 @@ You are performing the **RoundTable Commander Onboarding**. Execute all steps in
 
 Ask each question one at a time using `AskUserQuestion`.
 
-**Question 1:**
+**Question 1 (Language — asked first so the rest of onboarding uses your preferred language):**
+> "What language should RoundTable respond in? Type your preferred language, or select an option below."
+- Options: `English` / `Mirror input language (bilingual — respond in whichever language the message was written in)`
+- Header: `Language`
+- Description for each:
+  - English — all responses in English regardless of input language
+  - Mirror input language (bilingual) — RoundTable mirrors the language of each individual message. If you write in English, the response is in English. If you write in another language, the response matches. Recommended for multilingual sessions.
+- Note: Most users will type their preferred language (e.g., "Thai", "Japanese", "Spanish") via the free-text input. The options above are common defaults.
+
+**From this point forward, present all remaining questions and text in the user’s chosen language.**
+
+**Question 2:**
 > "What position title should AM and the teams use when addressing you?"
 - Options: `Commander` / `Boss` / `Chief` / `Other — type your preferred title`
 - Header: `Callsign`
@@ -45,25 +56,16 @@ Ask each question one at a time using `AskUserQuestion`.
   - Chief — leadership-focused title
   - Other — enter any custom title you prefer
 
-**Question 2:**
+**Question 3:**
 > "What is your name?"
 - Header: `Name`
 - Options: `Prefer not to say` / `Use callsign only`
 - Note: The question text should make clear that typing a name is preferred. The two options are fallbacks for users who do not want to provide a name. Most users will type their name via the "Other" free-text input.
 
-**Question 3:**
+**Question 4:**
 > "What are your preferred pronouns?"
 - Options: `He / Him` / `She / Her` / `They / Them` / `No preference`
 - Header: `Pronouns`
-
-**Question 4:**
-> "What language should RoundTable respond in? Type your preferred language, or select an option below."
-- Options: `English` / `Mirror input language (bilingual — respond in whichever language the message was written in)`
-- Header: `Language`
-- Description for each:
-  - English — all responses in English regardless of input language
-  - Mirror input language (bilingual) — RoundTable mirrors the language of each individual message. If you write in English, the response is in English. If you write in another language, the response matches. Recommended for multilingual sessions.
-- Note: Most users will type their preferred language (e.g., "Thai", "Japanese", "Spanish") via the free-text input. The options above are common defaults.
 
 Save answers to profile section: `## Identity`
 
@@ -134,11 +136,11 @@ Ask each question one at a time using `AskUserQuestion`.
 
 **Question 3:**
 > "When AM or MT need to present you with a decision that has multiple valid options (architecture, stack choice, fix strategy), how should they present it?"
-- Options: `Context-first choice UI (recommended)` / `Free text — describe options in prose and I will reply`
+- Options: `Structured — explain options first, then present choice UI` / `Conversational — describe options in prose, I reply in free text`
 - Header: `Decisions`
 - Description for each:
-  - Context-first choice UI — Before opening any choice prompt, AM/MT will first deliver a full explanation: a diagram, comparison table, or written analysis of each option with trade-offs. Only AFTER you have reviewed the context will the structured AskUserQuestion choice UI appear. This ensures you make informed decisions, not blind picks.
-  - Free text — AM/MT describe the options in prose within the response. You reply in free text with your choice. More conversational, less structured.
+  - Structured — AM/MT explain all options with trade-offs first, then present a choice UI
+  - Conversational — AM/MT describe options in prose, you reply in free text
 
 Save answers to profile section: `## Working Style`
 
@@ -151,16 +153,16 @@ Present a summary table of all collected answers and ask for confirmation:
 ```
 Here is your Commander profile:
 
+  Language ........... [language]
   Callsign ........... [title]
   Name ............... [name]
   Pronouns ........... [pronouns]
-  Language ........... [language]
   Active Teams ....... [teams]
   Orchestration ...... Mode [A/B]
   Phase Gate ......... [ON/OFF]
   Verbosity .......... [level]
   Autonomy ........... [Full Oversight / Balanced / Autonomous]
-  Decisions .......... [Context-first AskUserQuestion / Free text]
+  Decisions .......... [Structured / Conversational]
 ```
 
 Use `AskUserQuestion`:
@@ -185,10 +187,10 @@ last_updated: DD-MM-YYYY
 # Commander Profile
 
 ## Identity
+- **Language:** [answer]
 - **Callsign:** [answer]
 - **Name:** [answer]
 - **Pronouns:** [answer]
-- **Language:** [answer]
 
 ## Team & Orchestration
 - **Active Teams:** [comma-separated list]
@@ -198,7 +200,7 @@ last_updated: DD-MM-YYYY
 ## Working Style
 - **Verbosity:** [Concise / Standard / Full]
 - **Autonomy Level:** [Full Oversight / Balanced / Autonomous]
-- **Architectural Decisions:** [Context-first AskUserQuestion / Free text]
+- **Architectural Decisions:** [Structured / Conversational]
 ```
 
 Replace `DD-MM-YYYY` with today's actual date.
@@ -212,16 +214,16 @@ Output the following (adapt callsign and name from profile):
 ```
 Commander profile saved to .claude/UserProfile.md
 
+  Language ........... [language]
   Callsign ........... [title]
   Name ............... [name]
   Pronouns ........... [pronouns]
-  Language ........... [language]
   Active Teams ....... [teams]
   Orchestration ...... Mode [A/B]
   Phase Gate ......... [ON/OFF]
   Verbosity .......... [level]
   Autonomy ........... [Full Oversight / Balanced / Autonomous]
-  Decisions .......... [Context-first AskUserQuestion / Free text]
+  Decisions .......... [Structured / Conversational]
 
 RoundTable is ready. Welcome, [callsign] [name].
 ```
@@ -241,7 +243,7 @@ RoundTable is ready. Welcome, [callsign] [name].
   - **Full Oversight** = full report + explicit approval for every action
   - **Balanced** = approval for major items, AM handles minor independently
   - **Autonomous** = short report, team executes autonomously
-- **Architectural Decisions: Context-first AskUserQuestion** means MT and team Conductors MUST deliver a full explanation (diagram, comparison table, or analysis) BEFORE opening the AskUserQuestion choice UI. The user must have full context before being asked to choose.
+- **Architectural Decisions: Structured** means MT and team Conductors MUST deliver a full explanation (diagram, comparison table, or analysis) BEFORE opening the AskUserQuestion choice UI. The user must have full context before being asked to choose.
 - **Phase Acceptance Gate** setting is applied as if Commander had toggled it in §2 policy.
 - Project-specific settings (tech stack, project type, structure mode, debug mode) are configured per-project — not during onboarding.
 - Profile can be updated at any time by running `/roundtable-setup update`.
